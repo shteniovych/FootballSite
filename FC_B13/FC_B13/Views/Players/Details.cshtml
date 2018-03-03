@@ -4,87 +4,84 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    h2 {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        color: blue;
+        text-align: center;
+    }
+</style>
 
-<h2>Details</h2>
+
+<h2>Деталі</h2>
 
 <div>
-    <h4>Player</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            Ім'я
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DateOfBirhday)
+            Дата народження
         </dt>
         <dd>
             @Html.DisplayFor(model => model.DateOfBirhday)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.RoleOnTheField)
+            Позиція
         </dt>
         <dd>
             @Html.DisplayFor(model => model.RoleOnTheField)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Number)
+            Номер
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Number)
         </dd>
         <dt>
+            Адреса
             @Html.DisplayNameFor(model => model.Address)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Address)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            Номер телефону
         </dt>
         <dd>
             @Html.DisplayFor(model => model.PhoneNumber)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.TransferPrise)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TransferPrise)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Citizenship)
+            Національність
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Citizenship)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Growth)
+            Ріст
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Growth)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Weight)
+            Вага
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Weight)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.InForceContract)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.InForceContract)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Contract)
+            Номер контракту
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Contract.ContractId)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Team)
+            Команда
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Team.NameTeam)
@@ -92,6 +89,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.PlayerId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.PlayerId">Редагувати</a><br />
+    <a asp-action="Index">Назад до списку</a>
 </div>

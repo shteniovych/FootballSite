@@ -9,3 +9,14 @@ D:\NULP\6 семестр\Курсова робота\FC_B13\FC_B13\obj\Debug\net
 D:\NULP\6 семестр\Курсова робота\FC_B13\FC_B13\obj\Debug\netcoreapp2.0\FC_B13.AssemblyInfo.cs
 D:\NULP\6 семестр\Курсова робота\FC_B13\FC_B13\obj\Debug\netcoreapp2.0\FC_B13.dll
 D:\NULP\6 семестр\Курсова робота\FC_B13\FC_B13\obj\Debug\netcoreapp2.0\FC_B13.pdb
+D:\NULP\6 семестр\Курсова робота\FootballSite\FootballSite\FC_B13\FC_B13\bin\Debug\netcoreapp2.0\FC_B13.deps.json
+D:\NULP\6 семестр\Курсова робота\FootballSite\FootballSite\FC_B13\FC_B13\bin\Debug\netcoreapp2.0\FC_B13.runtimeconfig.json
+D:\NULP\6 семестр\Курсова робота\FootballSite\FootballSite\FC_B13\FC_B13\bin\Debug\netcoreapp2.0\FC_B13.runtimeconfig.dev.json
+D:\NULP\6 семестр\Курсова робота\FootballSite\FootballSite\FC_B13\FC_B13\bin\Debug\netcoreapp2.0\FC_B13.dll
+D:\NULP\6 семестр\Курсова робота\FootballSite\FootballSite\FC_B13\FC_B13\bin\Debug\netcoreapp2.0\FC_B13.pdb
+D:\NULP\6 семестр\Курсова робота\FootballSite\FootballSite\FC_B13\FC_B13\obj\Debug\netcoreapp2.0\FC_B13.csproj.CoreCompileInputs.cache
+D:\NULP\6 семестр\Курсова робота\FootballSite\FootballSite\FC_B13\FC_B13\obj\Debug\netcoreapp2.0\FC_B13.AssemblyInfoInputs.cache
+D:\NULP\6 семестр\Курсова робота\FootballSite\FootballSite\FC_B13\FC_B13\obj\Debug\netcoreapp2.0\FC_B13.AssemblyInfo.cs
+D:\NULP\6 семестр\Курсова робота\FootballSite\FootballSite\FC_B13\FC_B13\obj\Debug\netcoreapp2.0\FC_B13.dll
+D:\NULP\6 семестр\Курсова робота\FootballSite\FootballSite\FC_B13\FC_B13\obj\Debug\netcoreapp2.0\FC_B13.pdb
+D:\NULP\6 семестр\Курсова робота\FootballSite\FootballSite\FC_B13\FC_B13\obj\Debug\netcoreapp2.0\FC_B13.csprojResolveAssemblyReference.cache

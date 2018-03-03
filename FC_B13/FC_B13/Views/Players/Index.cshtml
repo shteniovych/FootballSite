@@ -66,13 +66,7 @@
                     Номер телефону
                 </th>
                 <th>
-                    Трансферна ціна
-                </th>
-                <th>
                     Контракт
-                </th>
-                <th>
-                    Команда
                 </th>
                 <th></th>
             }
@@ -112,18 +106,12 @@
                         @Html.DisplayFor(modelItem => item.PhoneNumber)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.TransferPrise)
-                    </td>
-                    <td>
                         <a asp-action="Edit" asp-route-id="@item.PlayerId">Деталі контракту</a>
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Team.NameTeam)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.PlayerId">Редагувати</a>
-                        <a asp-action="Details" asp-route-id="@item.PlayerId">Деталі</a>
-                        <a asp-action="Delete" asp-route-id="@item.PlayerId">Видалити</a>
+                        <a asp-action="Edit" asp-route-id="@item.PlayerId">Редагувати</a><br />
+                        <a asp-action="Details" asp-route-id="@item.PlayerId">Деталі</a><br />
+                        <a asp-action="Delete" asp-route-id="@item.PlayerId">Видалити</a><br />
                     </td>
                 }
             </tr>

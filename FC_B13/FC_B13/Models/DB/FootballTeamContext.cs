@@ -18,10 +18,9 @@ namespace FC_B13.Models.DB
         public virtual DbSet<TeamCoach> TeamCoach { get; set; }
         public virtual DbSet<User> User { get; set; }
 
-        public FootballTeamContext(DbContextOptions<FootballTeamContext> options): base(options)
-        {
-
-        }
+        public FootballTeamContext(DbContextOptions<FootballTeamContext> options)
+: base(options)
+        { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -135,8 +134,6 @@ namespace FC_B13.Models.DB
 
             modelBuilder.Entity<Player>(entity =>
             {
-                entity.Property(e => e.PlayerId).ValueGeneratedNever();
-
                 entity.Property(e => e.Address)
                     .HasMaxLength(50)
                     .IsUnicode(false);
@@ -165,7 +162,6 @@ namespace FC_B13.Models.DB
                 entity.HasOne(d => d.Contract)
                     .WithMany(p => p.Player)
                     .HasForeignKey(d => d.ContractId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Players_Contracts");
 
                 entity.HasOne(d => d.Team)

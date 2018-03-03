@@ -5,19 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Додавання нового гравця</h2>
 
-<h4>Player</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="PlayerId" class="control-label"></label>
                 <input asp-for="PlayerId" class="form-control" />
                 <span asp-validation-for="PlayerId" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -49,11 +48,6 @@
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TransferPrise" class="control-label"></label>
-                <input asp-for="TransferPrise" class="form-control" />
-                <span asp-validation-for="TransferPrise" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Citizenship" class="control-label"></label>
                 <input asp-for="Citizenship" class="form-control" />
                 <span asp-validation-for="Citizenship" class="text-danger"></span>
@@ -73,13 +67,6 @@
                 <select asp-for="TeamId" class ="form-control" asp-items="ViewBag.TeamId"></select>
             </div>
             <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="InForceContract" /> @Html.DisplayNameFor(model => model.InForceContract)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
                 <label asp-for="ContractId" class="control-label"></label>
                 <select asp-for="ContractId" class ="form-control" asp-items="ViewBag.ContractId"></select>
             </div>
@@ -91,7 +78,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Назад до списку</a>
 </div>
 
 @section Scripts {

@@ -17,6 +17,7 @@ namespace FC_B13.Models.DB
         public DateTime EndTime { get; set; }
         public DateTime ConclusionTime { get; set; }
         public DateTime StartTime { get; set; }
+        public bool? InForseContract { get; set; }
 
         public ICollection<Coach> Coach { get; set; }
         public ICollection<Personal> Personal { get; set; }

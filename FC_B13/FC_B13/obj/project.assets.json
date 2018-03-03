@@ -13188,11 +13188,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\NULP\\6 семестр\\Курсова робота\\FC_B13\\FC_B13\\FC_B13.csproj",
+      "projectUniqueName": "D:\\NULP\\6 семестр\\Курсова робота\\FootballSite\\FootballSite\\FC_B13\\FC_B13\\FC_B13.csproj",
       "projectName": "FC_B13",
-      "projectPath": "D:\\NULP\\6 семестр\\Курсова робота\\FC_B13\\FC_B13\\FC_B13.csproj",
+      "projectPath": "D:\\NULP\\6 семестр\\Курсова робота\\FootballSite\\FootballSite\\FC_B13\\FC_B13\\FC_B13.csproj",
       "packagesPath": "C:\\Users\\vic14\\.nuget\\packages\\",
-      "outputPath": "D:\\NULP\\6 семестр\\Курсова робота\\FC_B13\\FC_B13\\obj\\",
+      "outputPath": "D:\\NULP\\6 семестр\\Курсова робота\\FootballSite\\FootballSite\\FC_B13\\FC_B13\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
