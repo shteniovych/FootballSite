@@ -1,0 +1,97 @@
+﻿@model FC_B13.Models.DB.Player
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Player</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirhday)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirhday)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleOnTheField)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RoleOnTheField)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TransferPrise)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TransferPrise)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Citizenship)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Citizenship)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Growth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Growth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InForceContract)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InForceContract)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contract)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contract.ContractId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Team)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Team.NameTeam)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PlayerId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,132 @@
+﻿@model IEnumerable<FC_B13.Models.DB.Player>
+
+@using System.Security.Claims
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    h2 {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        color: blue;
+        text-align: center;
+    }
+    .control_link{
+        font-size:20px;
+        margin:30px;
+    }
+    .control_link a{
+        text-decoration:none;
+        color:indigo;
+    }
+</style>
+<h2>Гравці Команди</h2>
+
+@if (User.Identity.IsAuthenticated && User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value == "admin")
+{
+    <p class="control_link text-right" >
+        <a asp-action="Create">Додати нового гравця</a>
+    </p>
+    <p class="control_link text-right">
+        <a asp-action="Create">Переглянути інвентар, який належить команді</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Ім'я
+            </th>
+            <th>
+                Дата народження
+            </th>
+            <th>
+                Позиція
+            </th>
+            <th>
+                Номер
+            </th>
+            <th>
+                Національність
+            </th>
+            <th>
+                Ріст
+            </th>
+            <th>
+                Вага
+            </th>
+            @if (User.Identity.IsAuthenticated && User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value == "admin")
+            {
+                <th>
+                    Адреса
+                </th>
+                <th>
+                    Номер телефону
+                </th>
+                <th>
+                    Трансферна ціна
+                </th>
+                <th>
+                    Контракт
+                </th>
+                <th>
+                    Команда
+                </th>
+                <th></th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirhday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleOnTheField)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Citizenship)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Growth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Weight)
+                </td>
+                @if (User.Identity.IsAuthenticated && User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value == "admin")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TransferPrise)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.PlayerId">Деталі контракту</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Team.NameTeam)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.PlayerId">Редагувати</a>
+                        <a asp-action="Details" asp-route-id="@item.PlayerId">Деталі</a>
+                        <a asp-action="Delete" asp-route-id="@item.PlayerId">Видалити</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
