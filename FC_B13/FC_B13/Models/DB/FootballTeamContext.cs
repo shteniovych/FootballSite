@@ -26,8 +26,6 @@ namespace FC_B13.Models.DB
         {
             modelBuilder.Entity<Coach>(entity =>
             {
-                entity.Property(e => e.CoachId).ValueGeneratedNever();
-
                 entity.Property(e => e.Address)
                     .IsRequired()
                     .HasMaxLength(50)
@@ -59,8 +57,6 @@ namespace FC_B13.Models.DB
 
             modelBuilder.Entity<Contract>(entity =>
             {
-                entity.Property(e => e.ContractId).ValueGeneratedNever();
-
                 entity.Property(e => e.ConclusionTime).HasColumnType("date");
 
                 entity.Property(e => e.EndTime).HasColumnType("date");
@@ -87,8 +83,6 @@ namespace FC_B13.Models.DB
 
             modelBuilder.Entity<Personal>(entity =>
             {
-                entity.Property(e => e.PersonalId).ValueGeneratedNever();
-
                 entity.Property(e => e.Address)
                     .HasMaxLength(50)
                     .IsUnicode(false);

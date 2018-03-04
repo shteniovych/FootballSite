@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -32,7 +34,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if (User.Identity.IsAuthenticated)
                     {
-                    <li><a asp-area="" asp-controller="Account" asp-action="Logout">Вийти</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Logout">Вийти</a></li>
                     }
                     else
                     {
@@ -45,24 +47,25 @@
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Команда<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-level">
-                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Тренерський склад</a></li>
-                            <li><a asp-area="" asp-controller="Players" asp-action="Index">Головна команда</a></li>
-                            <li><a href="#">Дубль</a></li>
+                            <li><a asp-area="" asp-controller="Coaches" asp-action="Index">Тренерський склад</a></li>
+                            <li><a asp-area="" asp-controller="Players" asp-action="Index" asp-route-teamId="15">Головна команда</a></li>
+                            <li><a asp-area="" asp-controller="Players" asp-action="Index" asp-route-teamId="14">Дубль</a></li>
+                            <li><a asp-area="" asp-controller="Players" asp-action="Index" asp-route-teamId="16">Ветерани</a></li>
                             <li class="divider"></li>
                             <li class="dropdown-submenu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Академія футболу</a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">U-14</a></li>
-                                    <li><a href="#">U-15</a></li>
-                                    <li><a href="#">U-16</a></li>
-                                    <li><a href="#">U-17</a></li>
-                                    <li><a href="#">U-19</a></li>
+                                    <li><a asp-area="" asp-controller="Players" asp-action="Index" asp-route-teamId="9">U-14</a></li>
+                                    <li><a asp-area="" asp-controller="Players" asp-action="Index" asp-route-teamId="10">U-15</a></li>
+                                    <li><a asp-area="" asp-controller="Players" asp-action="Index" asp-route-teamId="11">U-16</a></li>
+                                    <li><a asp-area="" asp-controller="Players" asp-action="Index" asp-route-teamId="12">U-17</a></li>
+                                    <li><a asp-area="" asp-controller="Players" asp-action="Index" asp-route-teamId="13">U-19</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">Персонал</a>
+                        <a asp-area="" asp-controller="Personals" asp-action="Index">Персонал</a>
                     </li>
                     <li>
                         <a asp-area="" asp-controller="Home" asp-action="About">Про нас</a>
@@ -70,6 +73,11 @@
                     <li>
                         <a asp-area="" asp-controller="Home" asp-action="Contact">Контакти</a>
                     </li>
+                    @if (User.Identity.IsAuthenticated && User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value == "admin")
+                    {
+                        <li class="divider"></li>
+                        <li><a asp-area="" asp-controller="Contracts" asp-action="Index">Контракти</a></li>
+                    }
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

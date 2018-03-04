@@ -1,0 +1,75 @@
+﻿@model IEnumerable<FC_B13.Models.DB.Contract>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    h2 {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        color: blue;
+        text-align: center;
+    }
+</style>
+
+
+<h2>Контракти, які уклав клуб</h2>
+
+<p>
+    <a asp-action="Create">Створити новий</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Номер контракту
+            </th>
+            <th>
+                Зарплата
+            </th>
+            <th>
+                Час закінчення контракту
+            </th>
+            <th>
+                Час укладання контракту
+            </th>
+            <th>
+                Час почакту дії контракту
+            </th>
+            <th>
+                Чи дійсний контракт
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContractId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ConclusionTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InForseContract)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ContractId">Редагувати</a><br />
+                    <a asp-action="Details" asp-route-id="@item.ContractId">Деталі</a> <br />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

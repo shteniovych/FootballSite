@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FC_B13.Models.DB.Coach>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Тренера клубу</h2>
+
+<p>
+    <a asp-action="Create">Додати нового тренера</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    Ім'я
+                </th>
+                <th>
+                    Дата народження
+                </th>
+                <th>
+                    Адреса
+                </th>
+                <th>
+                    Номер телефону
+                </th>
+                <th>
+                    Роль
+                </th>
+                <th>
+                    Контракт
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirhday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PositionInTeam)
+            </td>
+            <td>
+                <a asp-area="" asp-controller="Contracts" asp-action="Details" asp-route-id="@item.ContractId">Деталі контракту</a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CoachId">Редагувати</a><br />
+                <a asp-action="Details" asp-route-id="@item.CoachId">Деталі</a> <br />
+                <a asp-action="Delete" asp-route-id="@item.CoachId">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
