@@ -1,0 +1,27 @@
+﻿@model FC_B13.Models.DB.Profession
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Видалення професії</h2>
+
+<h3>Ви впевнені, що хочете видалити це?</h3>
+<div class="informationAboutStaff">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Назва
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProfessionName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ProfessionId" />
+        <input type="submit" value="Видалити" class="btn btn-lg btn-primary btn-block" />
+    </form>
+</div>
+<a asp-action="Index">Назад до списку</a>

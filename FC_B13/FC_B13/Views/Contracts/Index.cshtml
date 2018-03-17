@@ -1,24 +1,39 @@
 ﻿@model IEnumerable<FC_B13.Models.DB.Contract>
+
+@using FC_B13.Enums
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <style>
-    h2 {
-        margin-top: 50px;
-        margin-bottom: 50px;
-        color: blue;
-        text-align: center;
+
+    i {
+        color: black;
+        font-size: 20px;
+        padding-right: 10px;
+    }
+
+    .control-buttons a {
+        color: white;
+        font-size: 13px;
+    }
+
+    .controll-block {
+        margin: 20px;
     }
 </style>
 
-
 <h2>Контракти, які уклав клуб</h2>
 
-<p>
-    <a asp-action="Create">Створити новий</a>
-</p>
+<div class="container controll-block">
+    <div class="btn-group btn-group-justified control-buttons">
+        <a asp-action="Create" class="btn btn-primary"><i class="fa fa-plus"></i>Додати нову</a>
+        <a asp-action="Create" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i>Видалити усі</a>
+    </div>
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -63,11 +78,19 @@
                     @Html.DisplayFor(modelItem => item.StartTime)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.InForseContract)
+                    @if(item.InForseContract.ToString()=="True")
+                    {
+                        @StateContactEnum.Дійсний.ToString()
+
+                    }
+                    else
+                    {
+                        @StateContactEnum.Недійсний.ToString()
+
+                    }
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ContractId">Редагувати</a><br />
-                    <a asp-action="Details" asp-route-id="@item.ContractId">Деталі</a> <br />
+                    <a asp-action="Edit" asp-route-id="@item.ContractId">Редагувати</a>
                 </td>
             </tr>
         }

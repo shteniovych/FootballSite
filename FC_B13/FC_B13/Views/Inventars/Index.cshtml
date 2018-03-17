@@ -1,0 +1,69 @@
+﻿@model IEnumerable<FC_B13.Models.DB.Inventar>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+   
+    i {
+        color: black;
+        font-size: 20px;
+        padding-right: 10px;
+    }
+
+    .control-buttons a {
+        color: white;
+        font-size: 13px;
+    }
+
+    .controll-block {
+        margin: 20px;
+    }
+</style>
+
+<h2>Інвентар</h2>
+
+<div class="container controll-block">
+    <div class="btn-group btn-group-justified control-buttons">
+        <a asp-action="Create" class="btn btn-primary"><i class="fa fa-plus"></i>Додати нову</a>
+        <a asp-action="Create" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i>Видалити усі</a>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    Назва
+                </th>
+                <th>
+                    Кількість
+                </th>
+            <th>
+                Команда
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InventarName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Team.NameTeam)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.InventarId">Редагувати</a> <br />
+                <a asp-action="Delete" asp-route-id="@item.InventarId">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

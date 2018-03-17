@@ -4,38 +4,84 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using System.Security.Claims
+
+<style>
+
+    i {
+        color: black;
+        font-size: 20px;
+        padding-right: 10px;
+    }
+
+    .control-buttons a {
+        color: white;
+        font-size: 13px;
+    }
+
+    .controll-block {
+        margin: 20px;
+    }
+
+
+
+
+
+
+    .teams-list {
+        list-style-type: none;
+        padding-left: 0px;
+    }
+</style>
 
 <h2>Тренера клубу</h2>
 
-<p>
-    <a asp-action="Create">Додати нового тренера</a>
-</p>
+
+@if (User.Identity.IsAuthenticated && User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value == "admin")
+{
+    <div class="container controll-block">
+        <div class="btn-group btn-group-justified control-buttons">
+            <a asp-action="Create" class="btn btn-primary"><i class="fa fa-plus"></i>Додати нового</a>
+            <a asp-action="Create" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i>Видалити усі записи</a>
+        </div>
+    </div>
+}
+
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    Ім'я
-                </th>
-                <th>
-                    Дата народження
-                </th>
+            <th>
+                Ім'я
+            </th>
+            <th>
+                Дата народження
+            </th>
+            <th>
+                Роль
+            </th>
+            <th>
+                Команди
+            </th>
+            @if (User.Identity.IsAuthenticated && User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value == "admin")
+            {
                 <th>
                     Адреса
                 </th>
+
                 <th>
                     Номер телефону
                 </th>
-                <th>
-                    Роль
-                </th>
+
                 <th>
                     Контракт
                 </th>
+            }
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -44,23 +90,41 @@
                 @Html.DisplayFor(modelItem => item.DateOfBirhday)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.PositionInTeam)
             </td>
             <td>
-                <a asp-area="" asp-controller="Contracts" asp-action="Details" asp-route-id="@item.ContractId">Деталі контракту</a>
+                    @foreach (var coach in Model)
+                    {
+                        foreach (var personalProfession in coach.TeamCoach.Select(t => t.Team).Select(p => p.NameTeam))
+                        {
+                            if (coach.CoachId == item.CoachId)
+                            {
+                                <ul class="teams-list">
+                                    <li>@personalProfession</li>
+                                </ul>
+                            }
+                        }
+                    }
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CoachId">Редагувати</a><br />
-                <a asp-action="Details" asp-route-id="@item.CoachId">Деталі</a> <br />
-                <a asp-action="Delete" asp-route-id="@item.CoachId">Видалити</a>
-            </td>
+            @if (User.Identity.IsAuthenticated && User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value == "admin")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+
+                <td>
+                    <a asp-area="" asp-controller="Contracts" asp-action="Details" asp-route-id="@item.ContractId">Деталі контракту</a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CoachId">Редагувати</a><br />
+                    <a asp-action="Delete" asp-route-id="@item.CoachId">Видалити</a>
+                </td>
+            }
+
         </tr>
-}
+        }
     </tbody>
 </table>

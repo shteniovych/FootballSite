@@ -6,31 +6,33 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
-    h2 {
-        margin-top: 50px;
-        margin-bottom: 50px;
-        color: blue;
-        text-align: center;
+    i {
+        color: black;
+        font-size: 20px;
+        padding-right: 10px;
     }
-    .control_link{
-        font-size:20px;
-        margin:30px;
+
+    .control-buttons a {
+        color: white;
+        font-size: 13px;
     }
-    .control_link a{
-        text-decoration:none;
-        color:indigo;
+
+    .controll-block {
+        margin: 20px;
     }
 </style>
+
+
 <h2>Гравці Команди</h2>
 
 @if (User.Identity.IsAuthenticated && User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value == "admin")
 {
-    <p class="control_link text-right" >
-        <a asp-action="Create">Додати нового гравця</a>
-    </p>
-    <p class="control_link text-right">
-        <a asp-action="Create">Переглянути інвентар, який належить команді</a>
-    </p>
+    <div class="container controll-block">
+        <div class="btn-group btn-group-justified control-buttons">
+            <a asp-action="Create" class="btn btn-primary"><i class="fa fa-plus"></i>Додати нову</a>
+            <a asp-action="Create" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i>Видалити усі</a>
+        </div>
+    </div>
 }
 
 <table class="table">
@@ -110,8 +112,7 @@
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.PlayerId">Редагувати</a><br />
-                        <a asp-action="Details" asp-route-id="@item.PlayerId">Деталі</a><br />
-                        <a asp-action="Delete" asp-route-id="@item.PlayerId">Видалити</a><br />
+                        <a asp-action="Delete" asp-route-id="@item.PlayerId">Видалити</a>
                     </td>
                 }
             </tr>

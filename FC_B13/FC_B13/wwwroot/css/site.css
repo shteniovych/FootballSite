@@ -3,6 +3,34 @@
     padding-bottom: 20px;
 }
 
+h2 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: blue;
+    text-align: center;
+}
+h3{
+    text-align:center;
+    color:red;
+}
+h4{
+    text-align:center;
+}
+
+.form {
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+}
+.informationAboutStaff {
+    max-width: 400px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+}
+
+
+
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {

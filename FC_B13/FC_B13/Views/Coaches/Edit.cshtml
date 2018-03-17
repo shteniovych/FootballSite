@@ -5,46 +5,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Редагування тренера</h2>
 
-<h4>Coach</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+    <div class="col-md-12">
+        <form asp-action="Edit" class="form">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CoachId" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">Ім'я</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DateOfBirhday" class="control-label"></label>
+                <label asp-for="DateOfBirhday" class="control-label">Дата народження</label>
                 <input asp-for="DateOfBirhday" class="form-control" />
                 <span asp-validation-for="DateOfBirhday" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
+                <label asp-for="Address" class="control-label">Адреса</label>
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
+                <label asp-for="PhoneNumber" class="control-label">Номер телефону</label>
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PositionInTeam" class="control-label"></label>
+                <label asp-for="PositionInTeam" class="control-label">Роль</label>
                 <input asp-for="PositionInTeam" class="form-control" />
                 <span asp-validation-for="PositionInTeam" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="InForceContract" /> @Html.DisplayNameFor(model => model.InForceContract)
-                    </label>
-                </div>
             </div>
             <div class="form-group">
                 <label asp-for="ContractId" class="control-label"></label>
@@ -52,14 +44,14 @@
                 <span asp-validation-for="ContractId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Зберегти" class="btn btn-lg btn-primary btn-block" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Назад до списку</a>
 </div>
 
 @section Scripts {

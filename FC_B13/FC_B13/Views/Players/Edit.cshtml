@@ -1,30 +1,16 @@
 ﻿@model FC_B13.Models.DB.Player
-
+@using FC_B13.Enums
 @{
     ViewData["Title"] = "Редагування гравця";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    h2 {
-        margin-top: 50px;
-        margin-bottom: 50px;
-        color: blue;
-        text-align: center;
-    }
-    .form-edit {
-        max-width: 380px;
-        padding: 15px 35px 45px;
-        margin: 0 auto;
-        text-align:center;
-    }
-</style>
 
 <h2>Редагування інформації про гравця</h2>
 
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="Edit" class="form-edit">
+        <form asp-action="Edit" class="form">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PlayerId" />
             <div class="form-group">
@@ -39,7 +25,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="RoleOnTheField" class="control-label">Позиція на полі</label>
-                <input asp-for="RoleOnTheField" class="form-control" />
+                <select asp-for="RoleOnTheField" class="form-control">
+                    <option value="захисник">захисник</option>
+                    <option value="півзахисник">півзахисник</option>
+                </select>
+                @*<input asp-for="RoleOnTheField" class="form-control" />*@
                 <span asp-validation-for="RoleOnTheField" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -83,7 +73,7 @@
                 <span asp-validation-for="ContractId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Зберегти" class="btn btn-default" />
+                <input type="submit" value="Зберегти" class="btn btn-lg btn-primary btn-block" />
             </div>
         </form>
     </div>

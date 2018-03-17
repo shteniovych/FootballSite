@@ -10,6 +10,7 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/js/font-awesome.min.css">
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -68,18 +69,25 @@
                         <a asp-area="" asp-controller="Personals" asp-action="Index">Персонал</a>
                     </li>
                     <li>
-                        <a asp-area="" asp-controller="Home" asp-action="About">Про нас</a>
+                        <a asp-area="" asp-controller="Home" asp-action="About">Інформація</a>
                     </li>
                     <li>
                         <a asp-area="" asp-controller="Home" asp-action="Contact">Контакти</a>
                     </li>
                     @if (User.Identity.IsAuthenticated && User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value == "admin")
                     {
-                        <li class="divider"></li>
-                        <li><a asp-area="" asp-controller="Contracts" asp-action="Index">Контракти</a></li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Менеджмент команди<b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-level">
+                                <li><a asp-area="" asp-controller="Teams" asp-action="Index">Команди</a></li>
+                                <li><a asp-area="" asp-controller="Contracts" asp-action="Index">Контракти</a></li>
+                                <li><a asp-area="" asp-controller="Inventars" asp-action="Index">Інвентар</a></li>
+                                <li><a asp-area="" asp-controller="Professions" asp-action="Index">Професії</a></li>
+                            </ul>
+                        </li>
                     }
                 </ul>
-            </div><!--/.nav-collapse -->
+            </div>
         </div>
     </div>
 

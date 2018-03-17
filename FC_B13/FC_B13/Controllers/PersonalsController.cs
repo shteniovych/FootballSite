@@ -21,7 +21,7 @@ namespace FC_B13.Controllers
         // GET: Personals
         public async Task<IActionResult> Index()
         {
-            var footballTeamContext = _context.Personal.Include(p => p.Contract);
+            var footballTeamContext = _context.Personal.Include(p => p.Contract).Include(p=>p.PersonalProfession).ThenInclude(p=>p.Profession);
             return View(await footballTeamContext.ToListAsync());
         }
 

@@ -5,57 +5,43 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Personal</h4>
+<h2>Видалення персоналу</h2>
+<h3>Ви впевнені, що хочете видалити це?</h3>
+<div class="informationAboutStaff">
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            Ім'я
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DataOfBirthday)
+            Дата народження
         </dt>
         <dd>
             @Html.DisplayFor(model => model.DataOfBirthday)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            Номер телефону
         </dt>
         <dd>
             @Html.DisplayFor(model => model.PhoneNumber)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Address)
+            Адреса
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Address)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ProfessionId)
+            Професії
         </dt>
         <dd>
             @Html.DisplayFor(model => model.ProfessionId)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.InForceContract)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.InForceContract)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.IsManager)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IsManager)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Contract)
+            Контракт
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Contract.ContractId)
@@ -64,7 +50,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="PersonalId" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Видалити" class="btn btn-lg btn-primary btn-block" />
     </form>
 </div>
+<a asp-action="Index">Назад до списку</a>

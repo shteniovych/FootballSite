@@ -16,9 +16,7 @@ namespace FC_B13.Models.DB
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public int ProfessionId { get; set; }
-        public bool InForceContract { get; set; }
         public int ContractId { get; set; }
-        public string IsManager { get; set; }
 
         public Contract Contract { get; set; }
         public ICollection<PersonalProfession> PersonalProfession { get; set; }

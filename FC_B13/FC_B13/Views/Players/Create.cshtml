@@ -9,69 +9,64 @@
 
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+    <div class="col-md-12">
+        <form asp-action="Create" class="form">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="PlayerId" class="control-label"></label>
-                <input asp-for="PlayerId" class="form-control" />
-                <span asp-validation-for="PlayerId" class="text-danger"></span>
-            </div>*@
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">Ім'я</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DateOfBirhday" class="control-label"></label>
+                <label asp-for="DateOfBirhday" class="control-label">Дата народження</label>
                 <input asp-for="DateOfBirhday" class="form-control" />
                 <span asp-validation-for="DateOfBirhday" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RoleOnTheField" class="control-label"></label>
+                <label asp-for="RoleOnTheField" class="control-label">Позиція</label>
                 <input asp-for="RoleOnTheField" class="form-control" />
                 <span asp-validation-for="RoleOnTheField" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Number" class="control-label"></label>
+                <label asp-for="Number" class="control-label">Номер</label>
                 <input asp-for="Number" class="form-control" />
                 <span asp-validation-for="Number" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
+                <label asp-for="Address" class="control-label">Адреса</label>
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
+                <label asp-for="PhoneNumber" class="control-label">Номер телефону</label>
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Citizenship" class="control-label"></label>
+                <label asp-for="Citizenship" class="control-label">Національність</label>
                 <input asp-for="Citizenship" class="form-control" />
                 <span asp-validation-for="Citizenship" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Growth" class="control-label"></label>
+                <label asp-for="Growth" class="control-label">Ріст</label>
                 <input asp-for="Growth" class="form-control" />
                 <span asp-validation-for="Growth" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Weight" class="control-label"></label>
+                <label asp-for="Weight" class="control-label">Вага</label>
                 <input asp-for="Weight" class="form-control" />
                 <span asp-validation-for="Weight" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TeamId" class="control-label"></label>
+                <label asp-for="TeamId" class="control-label">Команда</label>
                 <select asp-for="TeamId" class ="form-control" asp-items="ViewBag.TeamId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="ContractId" class="control-label"></label>
+                <label asp-for="ContractId" class="control-label">Контракт</label>
                 <select asp-for="ContractId" class ="form-control" asp-items="ViewBag.ContractId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Додати" class="btn btn-lg btn-primary btn-block" />
             </div>
         </form>
     </div>

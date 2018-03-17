@@ -5,13 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Редагування персоналу</h2>
 
-<h4>Personal</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+    <div class="col-md-12">
+        <form asp-action="Edit" class="form">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PersonalId" />
             <div class="form-group">
@@ -40,24 +39,12 @@
                 <span asp-validation-for="ProfessionId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="InForceContract" /> @Html.DisplayNameFor(model => model.InForceContract)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
                 <label asp-for="ContractId" class="control-label"></label>
                 <select asp-for="ContractId" class="form-control" asp-items="ViewBag.ContractId"></select>
                 <span asp-validation-for="ContractId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IsManager" class="control-label"></label>
-                <input asp-for="IsManager" class="form-control" />
-                <span asp-validation-for="IsManager" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Зберегти" class="btn btn-lg btn-primary btn-block" />
             </div>
         </form>
     </div>

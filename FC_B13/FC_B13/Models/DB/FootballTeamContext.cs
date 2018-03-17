@@ -89,10 +89,6 @@ namespace FC_B13.Models.DB
 
                 entity.Property(e => e.DataOfBirthday).HasColumnType("date");
 
-                entity.Property(e => e.IsManager)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50)
@@ -116,13 +112,11 @@ namespace FC_B13.Models.DB
                 entity.HasOne(d => d.Personal)
                     .WithMany(p => p.PersonalProfession)
                     .HasForeignKey(d => d.PersonalId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PersonalAndProfession_Personal");
 
                 entity.HasOne(d => d.Profession)
                     .WithMany(p => p.PersonalProfession)
                     .HasForeignKey(d => d.ProfessionId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PersonalAndProfession_Professions");
             });
 
