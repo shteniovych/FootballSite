@@ -5,6 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.min.js"></script>
+
 <h2>Редагування тренера</h2>
 
 <hr />
@@ -39,7 +44,12 @@
                 <span asp-validation-for="PositionInTeam" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContractId" class="control-label"></label>
+                <label asp-for="Teams" class="control-label">Команди(введіть назву та натисніть enter)</label>
+                <input asp-for="Teams" id="teams" class="form-control" value="@ViewBag.Teams" data-role="tagsinput" type="text">
+                <span asp-validation-for="Teams" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContractId" class="control-label">Номер контракту</label>
                 <select asp-for="ContractId" class="form-control" asp-items="ViewBag.ContractId"></select>
                 <span asp-validation-for="ContractId" class="text-danger"></span>
             </div>

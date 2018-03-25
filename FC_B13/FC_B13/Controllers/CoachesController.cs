@@ -56,11 +56,20 @@ namespace FC_B13.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CoachId,Name,DateOfBirhday,Address,PhoneNumber,PositionInTeam,InForceContract,ContractId")] Coach coach)
+        public async Task<IActionResult> Create([Bind("CoachId,Name,DateOfBirhday,Address,PhoneNumber,PositionInTeam,Teams,ContractId")] Coach coach)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(coach);
+                var teams = coach.Teams.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach(var team in teams)
+                {
+                    var teamDb = _context.Team.FirstOrDefault(s => s.NameTeam == team);
+                    if(teamDb != null)
+                    {
+                        _context.Add(new TeamCoach { Team = teamDb, Coach = coach });
+                    }
+                }
+                
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -77,11 +86,28 @@ namespace FC_B13.Controllers
             }
 
             var coach = await _context.Coach.SingleOrDefaultAsync(m => m.CoachId == id);
+            
+            //======================Дістаємо список команд, які тренує поточний тренер=============================
+            string listOfTeams = "";
+            foreach(var c in _context.Coach.Include(c => c.Contract).Include(c => c.TeamCoach).ThenInclude(t => t.Team))
+            {
+                foreach(var coachTeam in c.TeamCoach.Select(t=>t.Team).Select(p=>p.NameTeam))
+                {
+                    if(c.CoachId == coach.CoachId)
+                    {
+                        listOfTeams += coachTeam+",";
+                    }
+                }
+            }
+            //=======================================================================================================
+
+
             if (coach == null)
             {
                 return NotFound();
             }
             ViewData["ContractId"] = new SelectList(_context.Contract, "ContractId", "ContractId", coach.ContractId);
+            ViewData["Teams"] = listOfTeams;
             return View(coach);
         }
 
@@ -90,7 +116,7 @@ namespace FC_B13.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CoachId,Name,DateOfBirhday,Address,PhoneNumber,PositionInTeam,InForceContract,ContractId")] Coach coach)
+        public async Task<IActionResult> Edit(int id, [Bind("CoachId,Name,DateOfBirhday,Address,PhoneNumber,PositionInTeam,Teams,ContractId")] Coach coach)
         {
             if (id != coach.CoachId)
             {
@@ -101,6 +127,41 @@ namespace FC_B13.Controllers
             {
                 try
                 {
+                    var teams = coach.Teams.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    
+                    var teamsCoachesToRemove = coach.TeamCoach.ToList()
+                    .Where(ct => !teams.Contains(ct.Team.NameTeam)).ToList();
+
+                    //foreach (var ctToRemove in teamsCoachesToRemove)
+                    //{
+                    //    coach.TeamCoach.Remove(ctToRemove);
+                    //}
+
+                    //var teamsToAdd = teams.Where(t => coach.TeamCoach
+                    //.All(tc => tc.Team.NameTeam != t)).ToList();
+
+                    //foreach(var t in teamsToAdd)
+                    //{
+                    //    var teamDb = _context.Team.FirstOrDefault(s => s.NameTeam == t);
+                    //    if (teamDb != null)
+                    //    {
+                    //        _context.Add(new TeamCoach { Team = teamDb, Coach = coach });
+                    //    }
+
+                    //}
+
+                    //foreach (var technology in technologiesToAdd)
+                    //{
+                    //    var technologyDB = unitOfWork.Technologies.GetByName(technology);
+
+                    //    if (technologyDB == null)
+                    //    {
+                    //        technologyDB = unitOfWork.Technologies.Create(new Technology { ImagePath = $"img/technologies/{technology}", Name = technology });
+                    //    }
+
+                    //    vacancyDb.TechnologyVacancy.Add(new TechnologyVacancy { Technology = technologyDB, Vacancy = vacancyDb });
+                    //}
                     _context.Update(coach);
                     await _context.SaveChangesAsync();
                 }
