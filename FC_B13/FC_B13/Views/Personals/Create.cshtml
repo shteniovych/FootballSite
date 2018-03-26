@@ -5,6 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.min.js"></script>
+
 <h2>Додавання персоналу</h2>
 
 <hr />
@@ -33,13 +38,13 @@
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProfessionId" class="control-label">Професія</label>
-                <input asp-for="ProfessionId" class="form-control" />
-                <span asp-validation-for="ProfessionId" class="text-danger"></span>
+                <label asp-for="Professions" class="control-label">Професії(введіть назву та натисніть enter)</label>
+                <input asp-for="Professions" class="form-control" value="" data-role="tagsinput" type="text">
+                <span asp-validation-for="Professions" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ContractId" class="control-label">Контракт</label>
-                <select asp-for="ContractId" class ="form-control" asp-items="ViewBag.ContractId"></select>
+                <select asp-for="ContractId" class="form-control" asp-items="ViewBag.ContractId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Додати" class="btn btn-lg btn-primary btn-block" />

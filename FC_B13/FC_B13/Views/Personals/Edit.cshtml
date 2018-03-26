@@ -5,6 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.min.js"></script>
+
 <h2>Редагування персоналу</h2>
 
 <hr />
@@ -14,32 +19,32 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PersonalId" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">П.І.Б.</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataOfBirthday" class="control-label"></label>
+                <label asp-for="DataOfBirthday" class="control-label">Дата нородження</label>
                 <input asp-for="DataOfBirthday" class="form-control" />
                 <span asp-validation-for="DataOfBirthday" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
+                <label asp-for="PhoneNumber" class="control-label">Номер телефону</label>
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
+                <label asp-for="Address" class="control-label">Адреса</label>
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProfessionId" class="control-label"></label>
-                <input asp-for="ProfessionId" class="form-control" />
-                <span asp-validation-for="ProfessionId" class="text-danger"></span>
+                <label asp-for="Professions" class="control-label">Професії(введіть назву та натисніть enter)</label>
+                <input asp-for="Professions" id="teams" class="form-control" value="@ViewBag.Professions" data-role="tagsinput" type="text">
+                <span asp-validation-for="Professions" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContractId" class="control-label"></label>
+                <label asp-for="ContractId" class="control-label">Номер контракту</label>
                 <select asp-for="ContractId" class="form-control" asp-items="ViewBag.ContractId"></select>
                 <span asp-validation-for="ContractId" class="text-danger"></span>
             </div>
@@ -51,7 +56,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Назад до списку</a>
 </div>
 
 @section Scripts {

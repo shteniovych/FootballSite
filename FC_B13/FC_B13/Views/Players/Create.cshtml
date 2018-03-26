@@ -22,9 +22,19 @@
                 <input asp-for="DateOfBirhday" class="form-control" />
                 <span asp-validation-for="DateOfBirhday" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="RoleOnTheField" class="control-label">Позиція</label>
                 <input asp-for="RoleOnTheField" class="form-control" />
+                <span asp-validation-for="RoleOnTheField" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="RoleOnTheField" class="control-label">Позиція на полі</label>
+                <select asp-for="RoleOnTheField" class="form-control">
+                    <option value="Воротар">Воротар</option>
+                    <option value="Захисник">Захисник</option>
+                    <option value="Півзахисник">Півзахисник</option>
+                    <option value="Нападник">Нападник</option>
+                </select>
                 <span asp-validation-for="RoleOnTheField" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -59,11 +69,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="TeamId" class="control-label">Команда</label>
-                <select asp-for="TeamId" class ="form-control" asp-items="ViewBag.TeamId"></select>
+                <select asp-for="TeamId" class="form-control" asp-items="ViewBag.TeamId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="ContractId" class="control-label">Контракт</label>
-                <select asp-for="ContractId" class ="form-control" asp-items="ViewBag.ContractId"></select>
+                <select asp-for="ContractId" class="form-control" asp-items="ViewBag.ContractId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Додати" class="btn btn-lg btn-primary btn-block" />

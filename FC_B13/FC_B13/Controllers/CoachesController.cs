@@ -116,7 +116,7 @@ namespace FC_B13.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CoachId,Name,DateOfBirhday,Address,PhoneNumber,PositionInTeam,Teams,ContractId")] Coach coach)
+        public async Task<IActionResult> Edit(int id, [Bind("CoachId,Name,DateOfBirhday,Address,PhoneNumber,PositionInTeam,TeamCoach,Teams,ContractId")] Coach coach)
         {
             if (id != coach.CoachId)
             {
@@ -129,39 +129,25 @@ namespace FC_B13.Controllers
                 {
                     var teams = coach.Teams.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
-                    
-                    var teamsCoachesToRemove = coach.TeamCoach.ToList()
-                    .Where(ct => !teams.Contains(ct.Team.NameTeam)).ToList();
+                    var teamsToRemove = _context.TeamCoach.Where(t => t.CoachId==coach.CoachId).ToList();
 
-                    //foreach (var ctToRemove in teamsCoachesToRemove)
-                    //{
-                    //    coach.TeamCoach.Remove(ctToRemove);
-                    //}
+                    foreach(var tToRemove in teamsToRemove)
+                    {
+                        _context.TeamCoach.Remove(tToRemove);
+                    }
 
-                    //var teamsToAdd = teams.Where(t => coach.TeamCoach
-                    //.All(tc => tc.Team.NameTeam != t)).ToList();
+                    _context.SaveChanges();
 
-                    //foreach(var t in teamsToAdd)
-                    //{
-                    //    var teamDb = _context.Team.FirstOrDefault(s => s.NameTeam == t);
-                    //    if (teamDb != null)
-                    //    {
-                    //        _context.Add(new TeamCoach { Team = teamDb, Coach = coach });
-                    //    }
 
-                    //}
+                    foreach (var t in teams)
+                    {
+                        var teamDb = _context.Team.FirstOrDefault(s => s.NameTeam == t);
+                        if (teamDb != null)
+                        {
+                            _context.Add(new TeamCoach { Team = teamDb, Coach = coach });
+                        }
+                    }
 
-                    //foreach (var technology in technologiesToAdd)
-                    //{
-                    //    var technologyDB = unitOfWork.Technologies.GetByName(technology);
-
-                    //    if (technologyDB == null)
-                    //    {
-                    //        technologyDB = unitOfWork.Technologies.Create(new Technology { ImagePath = $"img/technologies/{technology}", Name = technology });
-                    //    }
-
-                    //    vacancyDb.TechnologyVacancy.Add(new TechnologyVacancy { Technology = technologyDB, Vacancy = vacancyDb });
-                    //}
                     _context.Update(coach);
                     await _context.SaveChangesAsync();
                 }

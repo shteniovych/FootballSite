@@ -37,11 +37,6 @@
                     {
                         <li><a asp-area="" asp-controller="Account" asp-action="Logout">Вийти</a></li>
                     }
-                    else
-                    {
-                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Зареєструватися</a></li>
-                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Увійти</a></li>
-                    }
                 </ul>
                 <ul class="nav navbar-nav">
                     <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Головна</a></li>
@@ -71,9 +66,6 @@
                     <li>
                         <a asp-area="" asp-controller="Home" asp-action="About">Інформація</a>
                     </li>
-                    <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Контакти</a>
-                    </li>
                     @if (User.Identity.IsAuthenticated && User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value == "admin")
                     {
                         <li>
@@ -96,17 +88,6 @@
         <hr />
         <footer class="text-center">
             <p>&copy; 2018 - ФК "B13". Штеньович Віктор.</p>
-            <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown link
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </div>
         </footer>
     </div>
 

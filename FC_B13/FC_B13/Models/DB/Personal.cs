@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FC_B13.Models.DB
 {
@@ -20,5 +21,8 @@ namespace FC_B13.Models.DB
 
         public Contract Contract { get; set; }
         public ICollection<PersonalProfession> PersonalProfession { get; set; }
+
+        [NotMapped]
+        public string Professions { get; set; }
     }
 }

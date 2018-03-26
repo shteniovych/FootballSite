@@ -2,51 +2,6 @@
     ViewData["Title"] = "Home Page";
 }
 
-<style>
-    
-    .news{
-        margin:100px;
-    }
-    .news h2{
-        font-size:24px;
-        color:blue;
-    }
-    .news p{
-        font-size:22px;
-    }
-    .news a {
-        background-color: #272f4a;
-        border: none;
-        color: white;
-        padding: 4px 14px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        -webkit-transition-duration: 0.4s; /* Safari */
-        transition-duration: 0.4s;
-    }
-
-    .pagination {
-        display: inline-block;
-    }
-
-    .pagination a {
-        color: black;
-        padding: 8px 16px;
-        text-decoration: none;
-    }
-
-        .pagination a.active {
-            background-color: #272f4a;
-            color: white;
-        }
-
-    .pagination a:hover:not(.active) {background-color: #ddd;}
-</style>
-
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -55,28 +10,13 @@
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="~/images/main_team.jpg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <a class="btn btn-default" href="#">
-                    Дізнатися більше про наш клуб
-                </a>
-            </div>
+            <img src="~/images/main_team.jpg" class="img-responsive" />
         </div>
         <div class="item">
             <img src="~/images/stadion.jpg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <a class="btn btn-default" href="#">
-                    Дізнатися більше про наш клуб
-                </a>
-            </div>
         </div>
         <div class="item">
             <img src="~/images/balls.jpg" alt="Package Management" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <a class="btn btn-default" href="#">
-                    Дізнатися більше про наш клуб
-                </a>
-            </div>
         </div>
     </div>
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -91,39 +31,8 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
-            <div class="news">
-                <h2>Хацкевич: Організація гри була на хорошому рівні</h2>
-                <p>
-                    Керманич київського Динамо Олександр Хацкевич підсумував розгромну перемогу своїх підопічних у спарингу з угорським Відеотоном у коментарі YouTube-каналу клубу.
-                </p>
-                <a class="pull-right">Дізнатися більше</a>
-            </div>
-            <div class="news">
-                <h2>Монако розгромив на виїзді Анже</h2>
-                <p>
-                    У матчі 25 туру Ліги 1 Монако з розгромним рахунком 4:0 переміг на виїзді Анже, дубль оформив Стефан Йоветіч. Бордо вдома переграв Ам'єн і наблизився до зони єврокубків. Справжній триллер у другому таймі видали Діжон та Ніцца. Усі голи були забиті в останні 30 хвилин поєдинку, у підсумку господарі перемогли на останніх хвилинах 3:2.
-                </p>
-                <a class="pull-right">Дізнатися більше</a>
-            </div>
-        </div>
+        <h2>Вітаємо вас на сайті</h2>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="pagination">
-            <a href="#">&laquo;</a>
-            <a href="#">1</a>
-            <a class="active" href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">&raquo;</a>
-        </div>
-    </div>
-</div>
-
-
 
 @*<div class="col-lg-3 col-sm-offset-3"> - для того щоб в bootstrap лишити 3 лишні колонки*@ 

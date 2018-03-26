@@ -21,6 +21,7 @@ namespace FC_B13.Models.DB
 
         public Contract Contract { get; set; }
         public ICollection<TeamCoach> TeamCoach { get; set; }
+
         [NotMapped]
         public string Teams { get; set; }
     }

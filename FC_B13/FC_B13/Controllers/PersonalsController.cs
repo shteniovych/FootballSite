@@ -56,10 +56,19 @@ namespace FC_B13.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PersonalId,Name,DataOfBirthday,PhoneNumber,Address,ProfessionId,InForceContract,ContractId,IsManager")] Personal personal)
+        public async Task<IActionResult> Create([Bind("PersonalId,Name,DataOfBirthday,PhoneNumber,Address,ProfessionId,InForceContract,ContractId,Professions")] Personal personal)
         {
             if (ModelState.IsValid)
             {
+                var professions = personal.Professions.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var profession in professions)
+                {
+                    var professionDb = _context.Profession.FirstOrDefault(s => s.ProfessionName == profession);
+                    if (professionDb != null)
+                    {
+                        _context.Add(new PersonalProfession { Profession = professionDb, Personal = personal });
+                    }
+                }
                 _context.Add(personal);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -77,11 +86,27 @@ namespace FC_B13.Controllers
             }
 
             var personal = await _context.Personal.SingleOrDefaultAsync(m => m.PersonalId == id);
+
+            //======================Дістаємо список команд, які тренує поточний тренер=============================
+            string listOfProfessions = "";
+            foreach (var c in _context.Personal.Include(c => c.Contract).Include(c => c.PersonalProfession).ThenInclude(t => t.Profession))
+            {
+                foreach (var pp in c.PersonalProfession.Select(t => t.Profession).Select(p => p.ProfessionName))
+                {
+                    if (c.PersonalId == personal.PersonalId)
+                    {
+                        listOfProfessions += pp + ",";
+                    }
+                }
+            }
+            //=======================================================================================================
+
             if (personal == null)
             {
                 return NotFound();
             }
             ViewData["ContractId"] = new SelectList(_context.Contract, "ContractId", "ContractId", personal.ContractId);
+            ViewData["Professions"] = listOfProfessions;
             return View(personal);
         }
 
@@ -90,7 +115,7 @@ namespace FC_B13.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PersonalId,Name,DataOfBirthday,PhoneNumber,Address,ProfessionId,InForceContract,ContractId,IsManager")] Personal personal)
+        public async Task<IActionResult> Edit(int id, [Bind("PersonalId,Name,DataOfBirthday,PhoneNumber,Address,ProfessionId,ContractId,Professions")] Personal personal)
         {
             if (id != personal.PersonalId)
             {
@@ -101,6 +126,27 @@ namespace FC_B13.Controllers
             {
                 try
                 {
+                    var professions = personal.Professions.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    var teamsToRemove = _context.PersonalProfession.Where(t => t.PersonalId == personal.PersonalId).ToList();
+
+                    foreach (var tToRemove in teamsToRemove)
+                    {
+                        _context.PersonalProfession.Remove(tToRemove);
+                    }
+
+                    _context.SaveChanges();
+
+
+                    foreach (var t in professions)
+                    {
+                        var professionDb = _context.Profession.FirstOrDefault(s => s.ProfessionName == t);
+                        if (professionDb != null)
+                        {
+                            _context.Add(new PersonalProfession { Profession = professionDb, Personal = personal });
+                        }
+                    }
+
                     _context.Update(personal);
                     await _context.SaveChangesAsync();
                 }

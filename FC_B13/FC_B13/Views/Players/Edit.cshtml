@@ -26,8 +26,10 @@
             <div class="form-group">
                 <label asp-for="RoleOnTheField" class="control-label">Позиція на полі</label>
                 <select asp-for="RoleOnTheField" class="form-control">
-                    <option value="захисник">захисник</option>
-                    <option value="півзахисник">півзахисник</option>
+                    <option value="Воротар">Воротар</option>
+                    <option value="Захисник">Захисник</option>
+                    <option value="Півзахисник">Півзахисник</option>
+                    <option value="Нападник">Нападник</option>
                 </select>
                 @*<input asp-for="RoleOnTheField" class="form-control" />*@
                 <span asp-validation-for="RoleOnTheField" class="text-danger"></span>
